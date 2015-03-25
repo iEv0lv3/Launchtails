@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="large-12">
+    <h1>Drinks for category: <%= @categories.name %></h1>
+
+    <div>
+      <ul>
+        <% @drinks.each do |drink| %>
+        <li><%= drink.title %></li>
+        <% end %>
+      </ul>
+    </div>
+
+
+      <%= link_to 'Create a Drink', new_drink_path %>
+  </div>
+</div>

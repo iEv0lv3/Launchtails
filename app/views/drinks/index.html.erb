@@ -15,7 +15,7 @@
           <tr>
             <td><%= drink.title %></td>
             <td><%= truncate(drink.description, length: 30) %></td>
-            <td><%= drink.category %></td>
+            <td><%= drink.category_id %></td>
             <td>
               <%= link_to 'Delete',
                 '/drinks/' + drink.to_param,
@@ -25,6 +25,7 @@
         <%- end -%>
       </table>
 
+      <%= link_to 'Create a Drink', new_drink_path %>
       <%= paginate @drinks %>
     <%- end -%>
   </div>

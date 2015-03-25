@@ -1,4 +1,9 @@
 class DrinksController < ApplicationController
+
+  def index
+    @drinks = Drink.page(params[:page])
+  end
+
   def new
     @drink = Drink.new
   end
@@ -13,17 +18,14 @@ class DrinksController < ApplicationController
     end
   end
 
-  def index
-    @drinks = Drink.page(params[:page])
-  end
-
-  def category
-    @drink = Drink.find_by(drink_params)
-    @drink.category
+  def destroy
+    Drink.destroy(params[:id])
+    flash[:notice] = "Drink deleted."
+    redirect_to drinks_path
   end
 
   protected
   def drink_params
-    params.require(:drink).permit(:title, :description)
+    params.require(:drink).permit(:title, :description, :category_id)
   end
 end

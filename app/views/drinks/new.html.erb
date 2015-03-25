@@ -23,8 +23,8 @@
       <%= f.label :featured %>
       </br>
 
-      <%= f.select :category_id, ['Category 1', 'Category 2', 'Category 3', 'Category 4'] %>
-      <%= f.label :category_id %>
+      <%= f.select :category, Category.all.map { |c| [c.name, c.id] } %>
+      <%= f.label :category %>
 
       <%= f.radio_button(:alcohol_level, "Low", id: "Low") %>
       <%= f.label(:low) %>
@@ -40,5 +40,8 @@
 
       <%= f.submit "Add Drink" %>
     <%- end -%>
+
+    </br>
+    <%= link_to "Drinks List", drinks_path %>
   </div>
 </div>
